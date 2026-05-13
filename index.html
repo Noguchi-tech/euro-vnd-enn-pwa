@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f766e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="旅行換算">
+    <title>旅行用 為替換算PWA</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell" aria-label="旅行用 為替換算PWA">
+      <header class="top-panel">
+        <div class="segment" aria-label="通貨切替">
+          <button class="segment-button" type="button" data-currency="EUR">EUR</button>
+          <button class="segment-button" type="button" data-currency="VND">VND</button>
+        </div>
+
+        <div class="segment rate-mode" aria-label="レート種別切替">
+          <button class="segment-button" type="button" data-rate-mode="latest">最新レート</button>
+          <button class="segment-button" type="button" data-rate-mode="custom">設定レート</button>
+        </div>
+
+        <section class="rate-card" aria-label="レート情報">
+          <div>
+            <p class="label">使用レート</p>
+            <p class="rate-value" id="rateValue">レート未設定</p>
+          </div>
+          <div class="rate-meta">
+            <p id="rateTimestamp">更新日時なし</p>
+            <p id="rateSource">-</p>
+          </div>
+        </section>
+
+        <form class="custom-rate" id="customRateForm" hidden>
+          <label class="custom-rate-label" for="customRateInput">設定レート</label>
+          <input id="customRateInput" inputmode="decimal" autocomplete="off" placeholder="1通貨あたりの円">
+          <button type="submit">保存</button>
+        </form>
+
+        <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+      </header>
+
+      <section class="result-panel" aria-label="換算結果">
+        <div class="amount-row">
+          <span class="amount-label">換算対象</span>
+          <span class="amount-value" id="amountDisplay">0</span>
+          <span class="amount-currency" id="amountCurrency">EUR</span>
+        </div>
+        <div class="jpy-result" id="jpyResult">レート未設定</div>
+        <div class="expression" id="expressionDisplay">計算式なし</div>
+      </section>
+
+      <section class="keypad" aria-label="電卓">
+        <button class="key utility" type="button" data-action="clear">C</button>
+        <button class="key utility" type="button" data-action="backspace">BS</button>
+        <button class="key operator" type="button" data-operator="÷">÷</button>
+        <button class="key operator" type="button" data-operator="×">×</button>
+
+        <button class="key" type="button" data-number="7">7</button>
+        <button class="key" type="button" data-number="8">8</button>
+        <button class="key" type="button" data-number="9">9</button>
+        <button class="key operator" type="button" data-operator="-">-</button>
+
+        <button class="key" type="button" data-number="4">4</button>
+        <button class="key" type="button" data-number="5">5</button>
+        <button class="key" type="button" data-number="6">6</button>
+        <button class="key operator" type="button" data-operator="+">+</button>
+
+        <button class="key" type="button" data-number="1">1</button>
+        <button class="key" type="button" data-number="2">2</button>
+        <button class="key" type="button" data-number="3">3</button>
+        <button class="key equals" type="button" data-action="equals">=</button>
+
+        <button class="key zero" type="button" data-number="0">0</button>
+        <button class="key" type="button" data-number="00">00</button>
+        <button class="key" type="button" data-number=".">.</button>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+
