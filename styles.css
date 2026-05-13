@@ -1,0 +1,369 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --ink: #182522;
+  --muted: #63706b;
+  --line: #d8e0dc;
+  --primary: #0f766e;
+  --primary-strong: #0b5f59;
+  --accent: #d97706;
+  --calc-bg: #111820;
+  --calc-line: #445572;
+  --calc-number: #f09570;
+  --calc-op: #3f8a2f;
+  --calc-op-ink: #dcf4ba;
+  --danger: #b42318;
+  --warning: #965a00;
+  --shadow: 0 10px 24px rgba(28, 45, 39, 0.11);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-rows: auto minmax(134px, 1fr) auto;
+  gap: 8px;
+  width: min(100vw, 430px);
+  height: 100dvh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 8px) 12px calc(env(safe-area-inset-bottom) + 8px);
+  overflow: hidden;
+}
+
+.top-panel {
+  display: grid;
+  gap: 7px;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #edf4f1;
+}
+
+.segment-button {
+  min-height: 36px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.segment-button.is-active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.22);
+}
+
+.rate-mode .segment-button {
+  font-size: 0.88rem;
+}
+
+.rate-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.label,
+.rate-value,
+.rate-meta p,
+.status,
+.amount-label,
+.amount-currency {
+  margin: 0;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.rate-value {
+  margin-top: 2px;
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.rate-meta {
+  max-width: 46%;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.custom-rate {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 6px;
+  align-items: center;
+  min-height: 36px;
+}
+
+.custom-rate[hidden] {
+  display: none;
+}
+
+.custom-rate-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.custom-rate input {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.custom-rate button {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.status {
+  min-height: 17px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.status.is-error {
+  color: var(--danger);
+}
+
+.status.is-warning {
+  color: var(--warning);
+}
+
+.result-panel {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  min-height: 0;
+  padding: 12px 12px;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.amount-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 7px;
+  align-items: baseline;
+  color: var(--muted);
+}
+
+.amount-label,
+.amount-currency {
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.amount-value {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: clamp(1.2rem, 7vw, 1.9rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jpy-result {
+  color: var(--primary-strong);
+  font-size: clamp(2.05rem, 11vw, 3.25rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(45px, 1fr));
+  gap: 7px;
+  min-height: 248px;
+  max-height: 288px;
+}
+
+.key {
+  min-width: 0;
+  min-height: 45px;
+  border-radius: 8px;
+  background: var(--calc-bg);
+  color: var(--calc-number);
+  box-shadow: inset 0 0 0 2px var(--calc-line);
+  font-size: 1.34rem;
+  font-weight: 900;
+}
+
+.key:active {
+  transform: translateY(1px);
+}
+
+.operator {
+  background: var(--calc-op);
+  color: var(--calc-op-ink);
+  box-shadow: inset 0 0 0 2px #65b850;
+  font-size: 1.72rem;
+}
+
+.utility {
+  background: var(--calc-bg);
+  color: #ffffff;
+}
+
+.equals {
+  background: var(--calc-op);
+  color: var(--calc-op-ink);
+  box-shadow: inset 0 0 0 2px #65b850;
+  font-size: 1.72rem;
+}
+
+.zero {
+  grid-column: span 1;
+}
+
+.preview {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 0 12px 0 8px;
+  color: #ffffff;
+}
+
+.preview-clear {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+#expressionDisplay {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: clamp(1.55rem, 9vw, 2.55rem);
+  font-weight: 500;
+  line-height: 1;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backspace-key {
+  display: grid;
+  place-items: center;
+}
+
+.backspace-key svg {
+  width: min(46px, 58%);
+  height: auto;
+  fill: none;
+  stroke: #ffffff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 5;
+}
+
+@media (max-height: 760px) {
+  .app-shell {
+    gap: 6px;
+    padding: calc(env(safe-area-inset-top) + 6px) 10px calc(env(safe-area-inset-bottom) + 6px);
+  }
+
+  .segment-button,
+  .custom-rate input,
+  .custom-rate button {
+    min-height: 32px;
+    height: 32px;
+  }
+
+  .rate-card {
+    min-height: 46px;
+    padding: 6px 8px;
+  }
+
+  .result-panel {
+    padding: 10px;
+  }
+
+  .keypad {
+    gap: 6px;
+    min-height: 224px;
+  }
+
+  .key {
+    min-height: 42px;
+  }
+
+  .preview-clear {
+    width: 30px;
+    height: 30px;
+  }
+}
