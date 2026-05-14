@@ -49,7 +49,7 @@ button {
 
 .app-shell {
   display: grid;
-  grid-template-rows: auto minmax(134px, 1fr) auto;
+  grid-template-rows: auto minmax(96px, 1fr) auto;
   gap: 8px;
   width: min(100vw, 430px);
   height: 100dvh;
@@ -191,9 +191,9 @@ button {
 .result-panel {
   display: grid;
   align-content: center;
-  gap: 8px;
+  gap: 5px;
   min-height: 0;
-  padding: 12px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -218,7 +218,7 @@ button {
   min-width: 0;
   overflow: hidden;
   color: var(--ink);
-  font-size: clamp(1.2rem, 7vw, 1.9rem);
+  font-size: clamp(1.1rem, 6vw, 1.7rem);
   font-weight: 900;
   line-height: 1.05;
   text-align: right;
@@ -228,7 +228,7 @@ button {
 
 .jpy-result {
   color: var(--primary-strong);
-  font-size: clamp(2.05rem, 11vw, 3.25rem);
+  font-size: clamp(1.85rem, 9.4vw, 2.85rem);
   font-weight: 950;
   letter-spacing: 0;
   line-height: 1;
@@ -239,15 +239,16 @@ button {
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(5, minmax(45px, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
   gap: 7px;
-  min-height: 248px;
-  max-height: 288px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
 }
 
 .key {
   min-width: 0;
-  min-height: 45px;
+  min-height: 0;
   border-radius: 8px;
   background: var(--calc-bg);
   color: var(--calc-number);
@@ -350,16 +351,11 @@ button {
   }
 
   .result-panel {
-    padding: 10px;
+    padding: 7px 9px;
   }
 
   .keypad {
     gap: 6px;
-    min-height: 224px;
-  }
-
-  .key {
-    min-height: 42px;
   }
 
   .preview-clear {
